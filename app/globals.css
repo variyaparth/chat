@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a0f;
+  --accent-purple: #8b5cf6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.12), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.08), transparent 45%),
+    var(--bg-primary);
+  color: #ffffff;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling and custom scrollbar styling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.75) rgba(15, 15, 22, 0.9);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 22, 0.85);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid rgba(15, 15, 22, 0.85);
+  background: linear-gradient(180deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9f75ff 0%, #f467b1 100%);
+}
+
+.gradient-logo {
+  background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.page-transition {
+  animation: pageFadeIn 320ms ease-out;
+}
+
+.btn-interactive {
+  transition: transform 180ms ease, filter 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    color 180ms ease;
+}
+
+.btn-interactive:active {
+  transform: scale(0.98);
+}
+
+.card-fade-in {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cardFadeIn 500ms ease-out forwards;
+}
+
+.message-slide-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: messageSlideIn 260ms ease-out forwards;
+}
+
+.typing-dot {
+  animation: typingBounce 0.95s infinite ease-in-out;
+}
+
+.stream-cursor {
+  margin-left: 2px;
+  color: #8b5cf6;
+  animation: blink 1s step-end infinite;
+}
+
+.reaction-picker-enter {
+  animation: reactionPickerIn 160ms ease-out;
+  transform-origin: bottom right;
+}
+
+.reaction-pill-pop {
+  animation: reactionPillPop 180ms ease-out;
+}
+
+.reaction-count-bounce {
+  display: inline-block;
+  animation: reactionCountBounce 260ms ease-out;
+}
+
+.memory-toast-enter {
+  animation: memoryToastIn 220ms ease-out;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  animation: skeletonShimmer 1.2s infinite;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingBounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  40% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@keyframes skeletonShimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes reactionPickerIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes reactionPillPop {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reactionCountBounce {
+  0% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes memoryToastIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
